@@ -1,4 +1,4 @@
-module Buff
+module Buffer
   RC_VERSION = "0.0.1"
   class Setup
 
@@ -7,7 +7,7 @@ module Buff
       if exists?
         @content = YAML.load_file(File.expand_path path)
       else
-        raise Buff::Error::ConfigFileMissing
+        raise Buffer::Error::ConfigFileMissing
       end
     end
 

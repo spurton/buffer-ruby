@@ -1,4 +1,4 @@
-module Buff
+module Buffer
   class Encode
     class << self
       def encode(arg)

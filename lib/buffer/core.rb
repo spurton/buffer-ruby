@@ -1,6 +1,6 @@
 require 'pathname'
 
-module Buff
+module Buffer
   begin
     #TODO: change from #expand_path to Pathname if appropriate
     # if File.exists?(File.expand_path("~/.bufferapprc"))
@@ -58,7 +58,7 @@ module Buff
 
       def handle_response_code(response)
         error = Hashie::Mash.new(response.body)
-        raise Buff::Error::APIError unless error.code
+        raise Buffer::Error::APIError unless error.code
         "Buffer API Error Code: #{error.code}\n" +
         "HTTP Code: #{response.code}." +
         "Description: #{error.error}"

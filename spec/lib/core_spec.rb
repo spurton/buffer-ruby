@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe Buff::Client::Core do
+describe Buffer::Client::Core do
 
-  let(:client) { Buff::Client.new("some_token") }
+  let(:client) { Buffer::Client.new("some_token") }
   describe "#get" do
     it "delegates to #handle_response_code when code != 200" do
        stub_request(:get, "#{base_path}/info/configuration.json?access_token=some_token").
@@ -52,7 +52,7 @@ describe Buff::Client::Core do
         url = "#{base_path}/updates/#{id}.json?access_token=some_token"
         stub_with_to_return(:get, url, "update_by_id_non_auth.txt")
         lambda { client.update_by_id(id) }.
-          should raise_error(Buff::Error::APIError)
+          should raise_error(Buffer::Error::APIError)
       end
     end
   end

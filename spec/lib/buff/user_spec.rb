@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe Buff::Client::User do
+describe Buffer::Client::User do
   let(:id) { "5160746d54f04a5e3a00000f" }
 
   subject do
-    Buff::Client.new("some_token")
+    Buffer::Client.new("some_token")
   end
 
   describe "#user_info" do
@@ -16,7 +16,7 @@ describe Buff::Client::User do
     end
 
     it "returns a Rash object" do
-      rash.class.should eq(Buff::UserInfo)
+      rash.class.should eq(Buffer::UserInfo)
     end
 
     it "provides an accessor for plan" do

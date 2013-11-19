@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe Buff::Client do
+describe Buffer::Client do
   let(:id) { "5160746d54f04a5e3a00000f" }
 
   subject do
-    Buff::Client.new("some_token")
+    Buffer::Client.new("some_token")
   end
 
   describe "#initialize" do

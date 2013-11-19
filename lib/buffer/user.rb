@@ -1,8 +1,8 @@
-module Buff
+module Buffer
   class Client
     module User
       def user_info(options = {})
-        Buff::UserInfo.new(get("/user.json"))
+        Buffer::UserInfo.new(get("/user.json"))
       end
     end
   end

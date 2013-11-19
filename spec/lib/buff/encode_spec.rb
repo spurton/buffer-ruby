@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Buff::Encode do
+describe Buffer::Encode do
 
   context "successful code" do
 
@@ -15,22 +15,22 @@ describe Buff::Encode do
 
   describe "#encode"
     it "converts to match Buffer API specs encoding" do
-      Buff::Encode.encode([short_schedule]).
+      Buffer::Encode.encode([short_schedule]).
         should eq(schedules_encoded.gsub(/:/, '%3A'))
     end
 
     it "processes an input array of schedules" do
-      Buff::Encode.encode([very_short_schedule, very_short_schedule]).
+      Buffer::Encode.encode([very_short_schedule, very_short_schedule]).
         should eq("schedules[0][days][]=sun&schedules[0][days][]=sat&schedules[0][times][]=09%3A00&schedules[0][times][]=24%3A00&schedules[1][days][]=sun&schedules[1][days][]=sat&schedules[1][times][]=09%3A00&schedules[1][times][]=24%3A00")
     end
 
     it "includes index in conversion when multiple schedules present" do
-      Buff::Encode.encode([very_short_schedule, very_short_schedule, very_short_schedule]).
+      Buffer::Encode.encode([very_short_schedule, very_short_schedule, very_short_schedule]).
         should eq("schedules[0][days][]=sun&schedules[0][days][]=sat&schedules[0][times][]=09%3A00&schedules[0][times][]=24%3A00&schedules[1][days][]=sun&schedules[1][days][]=sat&schedules[1][times][]=09%3A00&schedules[1][times][]=24%3A00&schedules[2][days][]=sun&schedules[2][days][]=sat&schedules[2][times][]=09%3A00&schedules[2][times][]=24%3A00")
     end
 
     it "processes an input hash" do
-      Buff::Encode.encode({ schedules: [very_short_schedule, very_short_schedule, very_short_schedule] }).
+      Buffer::Encode.encode({ schedules: [very_short_schedule, very_short_schedule, very_short_schedule] }).
         should eq("schedules[0][days][]=sun&schedules[0][days][]=sat&schedules[0][times][]=09%3A00&schedules[0][times][]=24%3A00&schedules[1][days][]=sun&schedules[1][days][]=sat&schedules[1][times][]=09%3A00&schedules[1][times][]=24%3A00&schedules[2][days][]=sun&schedules[2][days][]=sat&schedules[2][times][]=09%3A00&schedules[2][times][]=24%3A00")
     end
   end

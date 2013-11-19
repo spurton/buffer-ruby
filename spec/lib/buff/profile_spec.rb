@@ -1,14 +1,14 @@
 require 'spec_helper'
 
-describe Buff::Client::Profile do
+describe Buffer::Client::Profile do
   let(:id) { "5160746d54f04a5e3a00000f" }
 
   subject do
-    Buff::Client.new("some_token")
+    Buffer::Client.new("some_token")
   end
 
   describe "#profiles" do
-    let(:rash) { Buff::Client.new("some_token").profiles }
+    let(:rash) { Buffer::Client.new("some_token").profiles }
 
     before(:each) do
       url = "#{ base_path }/profiles.json"
@@ -20,7 +20,7 @@ describe Buff::Client::Profile do
     end
 
     it "returns a Rash collection object" do
-      rash[0].class.should eq(Buff::Profile)
+      rash[0].class.should eq(Buffer::Profile)
     end
 
     it "provides an accessor for plan" do
@@ -36,10 +36,10 @@ describe Buff::Client::Profile do
       stub_with_to_return(:get, url, fixture_name)
     end
 
-    let(:rash) { Buff::Client.new("some_token").profile_by_id(id) }
+    let(:rash) { Buffer::Client.new("some_token").profile_by_id(id) }
 
     it "returns a rash collection" do
-      rash.class.should eq(Buff::Profile)
+      rash.class.should eq(Buffer::Profile)
     end
 
     it "accesses formatted service" do
@@ -54,10 +54,10 @@ describe Buff::Client::Profile do
       stub_with_to_return(:get, url, fixture_name)
     end
 
-    let(:rash) { Buff::Client.new("some_token").schedules_by_profile_id(id) }
+    let(:rash) { Buffer::Client.new("some_token").schedules_by_profile_id(id) }
 
     it "returns a rash collection" do
-      rash[0].class.should eq(Buff::Schedule)
+      rash[0].class.should eq(Buffer::Schedule)
     end
 
     it "accesses days" do

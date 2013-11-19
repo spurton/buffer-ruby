@@ -1,9 +1,9 @@
 require "spec_helper"
 
-describe Buff::Setup do
+describe Buffer::Setup do
 
-  let(:bad_config_setup) { Buff::Setup.new "~/notpresentexample" }
-  let(:setup) { Buff::Setup.new }
+  let(:bad_config_setup) { Buffer::Setup.new "~/notpresentexample" }
+  let(:setup) { Buffer::Setup.new }
 
   context "pathname" do
     it "sets the default path" do
@@ -13,7 +13,7 @@ describe Buff::Setup do
   context "verifies whether rc file exists" do
     it "fails with error when specified file not found" do
       lambda { bad_config_setup.path }.should
-        raise_error(Buff::Error::ConfigFileMissing)
+        raise_error(Buffer::Error::ConfigFileMissing)
     end
     it "documents when rc file is present" do
       expect(setup.exists?).to eq(true)
@@ -21,7 +21,7 @@ describe Buff::Setup do
   end
   context "determines if rc file is the most current version" do
     it "checks current RC_VERSION" do
-      expect( Buff::RC_VERSION ).to_not eq(nil)
+      expect( Buffer::RC_VERSION ).to_not eq(nil)
     end
 
     it "reports error when file is out of date" do

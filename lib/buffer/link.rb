@@ -1,9 +1,9 @@
-module Buff
+module Buffer
   class Client
     module Link
       def link(options)
         response = get("/links/shares.json", options)
-        Buff::Link.new(response)
+        Buffer::Link.new(response)
       end
     end
   end

@@ -1,16 +1,16 @@
 # -*- encoding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'buff/version'
+require 'buffer/version'
 
 Gem::Specification.new do |gem|
-  gem.name          = "buff"
-  gem.version       = Buff::VERSION
+  gem.name          = "buffer"
+  gem.version       = Buffer::VERSION
   gem.authors       = ["ZPH"]
   gem.email         = ["Zander@civet.ws"]
-  gem.description   = %q{Buff is an API Wrapper Gem for Bufferapp.com's API}
-  gem.summary       = %q{Buff is an API Wrapper Gem for Bufferapp.com's API}
-  gem.homepage      = "http://github.com/zph/buff"
+  gem.description   = %q{Buffer is an API Wrapper Gem for Bufferapp.com's API}
+  gem.summary       = %q{Buffer is an API Wrapper Gem for Bufferapp.com's API}
+  gem.homepage      = "http://github.com/bufferapp/buffer-ruby"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }

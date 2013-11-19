@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Buff::Schedules do
+describe Buffer::Schedules do
   before do
     @schedule = JSON.parse <<EOF
     {
@@ -54,13 +54,13 @@ EOF
 
   it "accepts an array of days" do
     lambda {
-      schedules = Buff::Schedules.new
-      schedules << Buff::Schedule.new
+      schedules = Buffer::Schedules.new
+      schedules << Buffer::Schedule.new
     }.should_not raise_error
   end
 
   it "dumping a double schedule yields correct json" do
-    schedules = Buff::Schedules.new
+    schedules = Buffer::Schedules.new
     schedules << @schedule << @schedule
     @sample_schedules = @sample_schedules.to_json
 
@@ -71,7 +71,7 @@ EOF
     let(:id) { "5160746d54f04a5e3a00000f" }
     it "throw error if schedules is empty" do
       lambda {
-        Buff::Client.new("some_token").set_schedules(id) }.
+        Buffer::Client.new("some_token").set_schedules(id) }.
       should raise_error(ArgumentError)
 
     end

@@ -1,6 +1,6 @@
-# Buff
+# buffer
 
-Buff is a Buffer API Wrapper written in Ruby.  It provides more thorough API coverage than the existing gem.
+buffer is a Buffer API Wrapper written in Ruby.  It provides more thorough API coverage than the existing gem.
 
 Since the gem is currently in ALPHA development, the interface is prone to change.  Please wait until v0.1.0 is released to become reliant on interface. As it stands, all of the basic API calls in BufferApp's spec are available.  Some of the optional params are yet to be implemented.
 
@@ -15,7 +15,7 @@ Or
 
 Add this line to your application's Gemfile to include HEAD code:
 
-`gem 'buff', :github => 'bufferapp/buffer-ruby'`
+`gem 'buffer', :github => 'bufferapp/buffer-ruby'`
 
 And then execute:
 
@@ -23,17 +23,17 @@ And then execute:
 
 Or install RubyGems version, which will receive more attention to stability:
 
-`$ gem install buff`
+`$ gem install buffer`
 
 ## Usage
 
-  * All methods are tested with Rspec and WebMock. Most methods do not have integration tests that reach out to the live Buffer API servers.  Proceed with caution until Buff reaches v0.1.0 and submit issues on Github Issues tab.
+  * All methods are tested with Rspec and WebMock. Most methods do not have integration tests that reach out to the live Buffer API servers.  Proceed with caution until buffer reaches v0.1.0 and submit issues on Github Issues tab.
   * Authentication is not included in this gem (Try OAuth-buffer2) or use the single API key given when registering your own Buffer Dev credentials.
   * Commandline bin is provided to enable posting of updates:
-    `buff Super witty stuff that fits in 140 chars`
+    `buffer Super witty stuff that fits in 140 chars`
     Will post to your first account when setup following instructions below.
     _A more convenient setup is planned in future releases._
-  * For convenience load credentials into `~/.bufferapprc` in the following layout.  This allows the `ACCESS_TOKEN` to be loaded into `Buff::ACCESS_TOKEN`:
+  * For convenience load credentials into `~/.bufferapprc` in the following layout.  This allows the `ACCESS_TOKEN` to be loaded into `buffer::ACCESS_TOKEN`:
 
 
 ```

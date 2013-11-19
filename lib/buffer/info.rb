@@ -1,9 +1,9 @@
-module Buff
+module Buffer
   class Client
     module Info
       def info
         response = get("/info/configuration.json")
-        Buff::Info.new(response)
+        Buffer::Info.new(response)
       end
     end
   end

@@ -1,4 +1,4 @@
-module Buff
+module Buffer
   module Error
     ConfigFileMissing = Class.new(StandardError)
     InvalidIdLength = Class.new(ArgumentError)

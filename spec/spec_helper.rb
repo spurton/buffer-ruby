@@ -1,4 +1,4 @@
-require 'buff'
+require 'buffer'
 require 'rspec'
 require 'webmock/rspec'
 require 'json'

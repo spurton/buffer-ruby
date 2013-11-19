@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe Buff::Client do
+describe Buffer::Client do
   describe "#link" do
-    let(:client) { Buff::Client.new("some_token") }
+    let(:client) { Buffer::Client.new("some_token") }
     let(:url) { %q{http://bufferapp.com} }
 
     before do

@@ -1,4 +1,4 @@
-module Buff
+module Buffer
   class Client
     include Core
     include User

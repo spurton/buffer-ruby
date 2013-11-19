@@ -1,4 +1,4 @@
-module Buff
+module Buffer
   class UserInfo < Hashie::Mash; end
   class Profile  < Hashie::Mash; end
   class Response < Hashie::Mash; end

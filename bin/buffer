@@ -2,7 +2,7 @@
 
 $LOAD_PATH.unshift(File.dirname(__FILE__), '..', 'lib')
 
-require 'buff'
+require 'buffer'
 
 begin
   require 'yaml'
@@ -24,8 +24,8 @@ rescue
   puts "Please upgrade from older config file structure" if ENV['BUFF_DEBUG']
 end
 
-client = Buff::Client.new(options['access_token'])
+client = Buffer::Client.new(options['access_token'])
 id = client.profiles[options['profile_index'].to_i].id
 
-response = client.create_update(body: {text: ARGV.join(" "), profile_ids: [ id ] })
+response = client.create_update(body: {text: ARGF.chomp, profile_ids: [ id ] } )
 puts response if ENV['BUFF_DEBUG']

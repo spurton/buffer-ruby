@@ -1,20 +1,20 @@
-module Buff
+module Buffer
   class Client
     module Update
       def update_by_id(id, options = {})
         check_id(id)
         response = get("/updates/#{id}.json")
-        Buff::Update.new(response)
+        Buffer::Update.new(response)
       end
 
       def updates_by_profile_id(id, options = {})
         status = options.fetch(:status) do
-          raise Buff::Error::MissingStatus, "Include :pending or :sent in args"
+          raise Buffer::Error::MissingStatus, "Include :pending or :sent in args"
         end
         options.delete(:status)
         response = get("/profiles/#{id}/updates/#{status.to_s}.json", options)
-        updates = response['updates'].map { |r| Buff::Update.new(r) }
-        Buff::Updates.new (
+        updates = response['updates'].map { |r| Buffer::Update.new(r) }
+        Buffer::Updates.new (
               { total: response['total'],
                 updates: updates }
         )
@@ -24,9 +24,9 @@ module Buff
         check_id(id)
         response = get("/updates/#{id}/interactions.json", options)
         interactions = response['interactions'].map do |r|
-          Buff::Interaction.new(r)
+          Buffer::Interaction.new(r)
         end
-        Buff::Interactions.new(
+        Buffer::Interactions.new(
           { total: response['total'], interactions: interactions }
         )
       end
@@ -67,8 +67,8 @@ module Buff
       end
 
       def check_id(id)
-        raise Buff::Error::InvalidIdLength unless id.length == 24
-        raise Buff::Error::InvalidIdContent unless id[/^[a-f0-9]+$/i]
+        raise Buffer::Error::InvalidIdLength unless id.length == 24
+        raise Buffer::Error::InvalidIdContent unless id[/^[a-f0-9]+$/i]
       end
     end
   end
