@@ -110,7 +110,7 @@ describe Buffer::Client do
 }
 EOF
         stub_request(:get, "https://api.bufferapp.com/1/updates/4ecda476542f7ee521000006/interactions.json?access_token=some_token&count=3&event=favorite&page=2").
-           with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Faraday v0.8.7'}).
+           with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'User-Agent'=>'Faraday v0.9.1'}).
            to_return(:status => 200, :body => response, :headers => {})
         client.interactions_by_update_id(id, page: 2, count: 3, event: "favorite")
       end
@@ -140,7 +140,7 @@ EOF
         order_hash = { order: [id_no, id_no, id_no] }
         stub_request(:post, %r{https://api\.bufferapp\.com/1/profiles/4ecda256512f7ee521000001/updates/reorder\.json\?access_token=.*}).
                    with(:body => {"order"=>["4ecda256512f7ee521000001", "4ecda256512f7ee521000001", "4ecda256512f7ee521000001"]},
-                        :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Content-Type'=>'application/x-www-form-urlencoded', 'User-Agent'=>'Faraday v0.8.7'}).
+                        :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Content-Type'=>'application/x-www-form-urlencoded', 'User-Agent'=>'Faraday v0.9.1'}).
                    to_return(:status => 200, :body => reorder_updates_body_response, :headers => {})
         client.reorder_updates(id_no, order_hash)
       end
