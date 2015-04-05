@@ -3,6 +3,7 @@ require "faraday_middleware"
 require "json"
 require "hashie/mash"
 require "addressable/uri"
+require 'environs'
 
 require "buffer/version"
 require "buffer/core"

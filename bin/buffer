@@ -1,31 +1,35 @@
 #!/usr/bin/env ruby
 
-$LOAD_PATH.unshift(File.dirname(__FILE__), '..', 'lib')
-
 require 'buffer'
+require 'logger'
 
-begin
-  require 'yaml'
+log_level = ENV['BUFFER_DEBUG'] ? Logger::INFO : Logger::ERROR
 
-  rc_file_path = File.expand_path('~/.bufferapprc')
-  raise Errno::ENOENT unless File.exists?(rc_file_path)
+LOG = Logger.new(STDOUT) { |l| l.log_level = log_level }
 
-  options = YAML.load_file(File.expand_path('~/.bufferapprc'))
-  if options.class == String
-    options_str = options.dup
-    options = Hash.new
-    options['access_token'], options['profile_index'] = options_str.split
-    options['verion'] = '0.0.0'
+def gather_message(argv)
+  args = argv.dup
+  case args.count
+  when 0 then abort("Please supply a message for Buffer Post.")
+  when 1 then args.first
+  else
+    args.join(" ")
   end
-rescue Errno::ENOENT
-  puts "You're missing the ~/.bufferapprc file. See the README for info."
-  exit 1
-rescue
-  puts "Please upgrade from older config file structure" if ENV['BUFF_DEBUG']
 end
 
-client = Buffer::Client.new(options['access_token'])
-id = client.profiles[options['profile_index'].to_i].id
+def main
+  token = Env.BUFFER_ACCESS_TOKEN
+  profile = Integer(Env.BUFFER_PROFILE_ID)
 
-response = client.create_update(body: {text: ARGF.chomp, profile_ids: [ id ] } )
-puts response if ENV['BUFF_DEBUG']
+  message = gather_message(ARGV)
+  client = Buffer::Client.new(token)
+  profile_id = client.profiles[profile].id
+  post_args = {text: message, profile_ids: [profile_id]}
+  LOG.info('#main.post_args') { post_args }
+  unless ENV['BUFFER_DEBUG']
+    client.create_update(body: post_args)
+    puts "Posted message."
+  end
+end
+
+main

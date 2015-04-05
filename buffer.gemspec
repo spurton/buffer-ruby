@@ -23,7 +23,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'guard-bundler'
   gem.add_development_dependency 'rb-fsevent'
   gem.add_development_dependency 'growl'
-  gem.add_development_dependency 'pry-full'
+  gem.add_development_dependency 'pry-uber'
 
   gem.add_runtime_dependency 'multi_json'
   gem.add_runtime_dependency 'yajl-ruby'
@@ -32,4 +32,5 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency 'hashie'
   gem.add_runtime_dependency 'rake'
   gem.add_runtime_dependency 'addressable'
+  gem.add_runtime_dependency 'environs'
 end
