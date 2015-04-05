@@ -19,7 +19,7 @@ end
 
 def main
   token = Env.BUFFER_ACCESS_TOKEN
-  profile = Integer(Env.BUFFER_PROFILE_ID)
+  profile = Integer(ENV.fetch('BUFFER_PROFILE_ID', "0"))
 
   message = gather_message(ARGV)
   client = Buffer::Client.new(token)
