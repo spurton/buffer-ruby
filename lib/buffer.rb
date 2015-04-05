@@ -16,7 +16,6 @@ require 'buffer/encode'
 require 'buffer/datastructure'
 require 'buffer/info'
 require 'buffer/client'
-require 'buffer/setup'
 
 module Buffer
 end
