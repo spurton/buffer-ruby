@@ -33,15 +33,11 @@ Or install RubyGems version, which will receive more attention to stability:
     `buffer Super witty stuff that fits in 140 chars`
     Will post to your first account when setup following instructions below.
     _A more convenient setup is planned in future releases._
-  * For convenience load credentials into `~/.bufferapprc` in the following layout.  This allows the `ACCESS_TOKEN` to be loaded into `buffer::ACCESS_TOKEN`:
-
+  * For convenience load credentials into environment as ENV variables:
 
 ```
-    ---
-    ACCESS_TOKEN: (BufferApp OAuth Access Token)
-    PROFILE_INDEX: (default of 0)
-    VERSION: (Do not alter)
-
+export BUFFER_ACCESS_TOKEN="1/jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj" # (BufferApp OAuth Access Token)
+export BUFFER_PROFILE_ID="0"                                    # (default of 0)
 ```
 
 ## Access Token Instructions
@@ -53,16 +49,13 @@ Or install RubyGems version, which will receive more attention to stability:
 * Submit that form and wait a short period (~2 min )
 * Visit: http://bufferapp.com/developers/apps
 * Gather Access Token and place it after the word "access_token"
-* Copy this file to the root of your user's home folder:
-* Set Line 2 to 0 if you only have one account to post to. Otherwise it's more complicated ;). Find me on Twitter and I can explain [@_ZPH](https://twitter.com/_ZPH).
-*   - ~/.bufferapprc
+* Set BUFFER_PROFILE_ID="0" if you only have one account to post to. Otherwise it's more complicated ;). Find me on Twitter and I can explain [@_ZPH](https://twitter.com/_ZPH).
 
 ## TODO:
 
 * Improve instructions
 
 #### Future versions will integrate with Buffer-OAuth system.
-* Determine if there is a way to use a single Application rather than creating unique ones per user.
 * Integrate Launchy for the purpose of launching browser window.
 * Possible to model behavior on [ t.gem ](https://github.com/sferik/t/blob/master/lib/t/cli.rb#L56-L113)
 
