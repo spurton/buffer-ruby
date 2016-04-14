@@ -51,6 +51,25 @@ export BUFFER_PROFILE_ID="0"                                    # (default of 0)
 * Gather Access Token and place it after the word "access_token"
 * Set BUFFER_PROFILE_ID="0" if you only have one account to post to. Otherwise it's more complicated ;). Find me on Twitter and I can explain [@_ZPH](https://twitter.com/_ZPH).
 
+#### Example
+
+The example below will use your Buffer account and schedule an update to be posted on your connected profiles with the specified IDs.
+
+```
+client = Buffer::Client.new(ACCESS_TOKEN)
+client.create_update(
+  body: {
+    text:
+      "Today's artist spotlight is on #{artist_name}.
+      Check out the track, #{track_title}.",
+    profile_ids: [
+      '...',
+      '...',
+    ]
+  },
+)
+```
+
 ## TODO:
 
 * Improve instructions
